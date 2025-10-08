@@ -11,14 +11,15 @@ services:
     volumes:
       # - ./config:/config
       - .:/config/workspace
+      - /home/ec2-user/.aws:/config/.aws:ro
     ports:
       - 8080:8443
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
-    runtime: nvidia  # For backward compatibility if needed
-    restart: unless-stopped
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+    # runtime: nvidia  # For backward compatibility if needed
+    # restart: unless-stopped
