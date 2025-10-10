@@ -1,8 +1,12 @@
 # This is a template for using python with uv package manager.
 
-## Sagemaker AI user
+## Run this only if don't have pyproject.toml
 ```bash
 uv init . -p python3.xx
+```
+
+## Sagemaker AI user
+```bash
 uv sync
 uv add boto3 python-dotenv
 uv run aws_credential_env.py
