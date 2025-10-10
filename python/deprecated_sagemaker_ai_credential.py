@@ -3,7 +3,10 @@ import os
 
 def create_aws_config_from_session(profile_name='default', output_dir='/home/ec2-user/.aws'):
     """Create AWS config files using current boto3 session credentials"""
-    
+    message = input(f"This will overwrite existing AWS config in {output_dir}. Continue? (y/n): ")
+    if message.lower() != 'y':
+        print("Aborted.")
+        return
     # Get current session
     session = boto3.Session()
     credentials = session.get_credentials()

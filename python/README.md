@@ -1,15 +1,22 @@
 # This is a template for using python with uv package manager.
 
-# Sagemaker AI user
+## Sagemaker AI user
 ```bash
+uv init . -p python3.xx
 uv sync
-uv add boto3
-uv run sagemaker_s3_credential.py
+uv add boto3 python-dotenv
+uv run aws_credential_env.py
 ```
 
 ```bash
 docker-compose up --build
 ```
 
-## access
+### access
 - https://<sagemaker-notebook-instance-name>.<aws-region>.sagemaker.aws/proxy/8080/
+
+## Run this at the top of any jupyter or script
+```python
+from dotenv import load_dotenv
+load_dotenv('.env.local', override=True)
+```
